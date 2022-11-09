@@ -19,7 +19,5 @@ public class User {
     @OneToMany
     @JoinColumn(name = "user_id")
     private List<Post> posts;
-    public List<Post> getPosts() {
-        return posts;
-    }
+    
 }
