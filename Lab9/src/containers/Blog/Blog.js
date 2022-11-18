@@ -5,7 +5,7 @@ import axios from "axios";
 import NewPost from "./../../components/NewPost/NewPost";
 import FullPost from "./../../components/FullPost/FullPost";
 import Post from "./../../components/Post/Post";
-import { GlobalContext } from './../../context/Global';
+import { GlobalContext } from "./../../context/Global";
 
 const Blog = () => {
   const [posts, setPosts] = useState([]);
@@ -21,7 +21,7 @@ const Blog = () => {
   // GETTING all the POSTS
   useEffect(() => {
     axios.get("http://localhost:8080/api/v1/posts").then((response) => {
-      setPosts([...response.data]); // if you dont want to limit
+      setPosts([...response.data]); // if you don't want to limit
     });
   }, [flag]);
 
@@ -68,23 +68,23 @@ const Blog = () => {
 
   return (
     <React.Fragment>
-       <GlobalContext.Provider value={selectedId}> 
-      <section className="Posts">
-        {rposts.length === 0 ? "loading" : rposts}
-      </section>
-      <section>
-        <FullPost
-          id={selectedId}
-          title={selectedPost.title}
-          author={selectedPost.author}
-          detail={selectedPost}
-          deleter={deleteHandler}
-        />
-      </section>
-      <section>
-        <NewPost execute={flagHandler} />
-      </section>
-       </GlobalContext.Provider> 
+      <GlobalContext.Provider value={selectedId}>
+        <section className="Posts">
+          {rposts.length === 0 ? "loading" : rposts}
+        </section>
+        <section>
+          <FullPost
+            id={selectedId}
+            title={selectedPost.title}
+            author={selectedPost.author}
+            detail={selectedPost}
+            deleter={deleteHandler}
+          />
+        </section>
+        <section>
+          <NewPost execute={flagHandler} />
+        </section>
+      </GlobalContext.Provider>
     </React.Fragment>
   );
 };
